@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday Big Sis!</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    body {
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+      overflow-x: hidden;
+      color: #333;
+    }
+    
+    .balloons {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+    }
+    
+    .balloon {
+      position: absolute;
+      width: 50px;
+      height: 60px;
+      border-radius: 50%;
+      animation: floatUp 15s linear infinite;
+    }
+    
+    .balloon::after {
+      content: "";
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 2px;
+      height: 30px;
+      background: rgba(0, 0, 0, 0.3);
+    }
+
+    .balloon::before {
+      content: "";
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 15px;
+      height: 12px;
+      border-radius: 50%;
+    }
+
+    .balloon:nth-child(1) {
+      background: #ff4081;
+      left: 10%;
+      animation-delay: 0s;
+    }
+    
+    .balloon:nth-child(1)::before {
+      background: #ff4081;
+    }
+    
+    .balloon:nth-child(2) {
+      background: #2196F3;
+      left: 25%;
+      animation-delay: 2s;
+    }
+    
+    .balloon:nth-child(2)::before {
+      background: #2196F3;
+    }
+    
+    .balloon:nth-child(3) {
+      background: #4CAF50;
+      left: 40%;
+      animation-delay: 4s;
+    }
+    
+    .balloon:nth-child(3)::before {
+      background: #4CAF50;
+    }
+    
+    .balloon:nth-child(4) {
+      background: #FFC107;
+      left: 55%;
+      animation-delay: 6s;
+    }
+    
+    .balloon:nth-child(4)::before {
+      background: #FFC107;
+    }
+    
+    .balloon:nth-child(5) {
+      background: #9C27B0;
+      left: 70%;
+      animation-delay: 8s;
+    }
+    
+    .balloon:nth-child(5)::before {
+      background: #9C27B0;
+    }
+    
+    .balloon:nth-child(6) {
+      background: #00BCD4;
+      left: 85%;
+      animation-delay: 10s;
+    }
+    
+    .balloon:nth-child(6)::before {
+      background: #00BCD4;
+    }
+    
+    @keyframes floatUp {
+      0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100px) rotate(10deg);
+        opacity: 0;
+      }
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    .subtitle {
+      font-size: 1.8rem;
+      color: #ff4081;
+      text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.1);
+      animation: bounce 2s infinite;
+      margin-bottom: 20px;
+    }
+    
+    header {
+      text-align: center;
+      padding: 40px 0;
+      position: relative;
+    }
+    
+    h1 {
+      font-size: 4rem;
+      color: #ff4081;
+      text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+      animation: bounce 2s infinite;
+    }
+    
+    @keyframes bounce {
+      0%, 100% { 
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-20px);
+      }
+    }
+    
+    .message {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 20px;
+      padding: 40px;
+      margin: 30px 0;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(10px);
+    }
+    
+    .message::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 70%);
+      z-index: -1;
+    }
+    
+    .message-content {
+      font-size: 1.3rem;
+      line-height: 1.8;
+      text-align: center;
+    }
+    
+    .message-content p {
+      margin-bottom: 20px;
+    }
+    
+    .highlight {
+      color: #ff4081;
+      font-weight: bold;
+      font-size: 20px;
+    }
+    
+    .videos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      margin: 40px 0;
+    }
+    
+    .video-frame {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    
+    .video-frame:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+    }
+    
+    .video-frame img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+    }
+    
+    .video-caption {
+      padding: 20px;
+      text-align: center;
+      font-style: italic;
+      color: #666;
+      font-size: 1.1rem;
+    }
+    .video-caption {
+      color: #ff4081;
+      font-weight: bold;
+      font-size: 30px;
+    }
+    
+    .wishes-section {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 20px;
+      padding: 40px;
+      margin: 40px 0;
+      backdrop-filter: blur(10px);
+    }
+    
+    .wishes-section h2 {
+      color: #ff4081;
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 2.8rem;
+      text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.1);
+    }
+    
+    .wishes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+    }
+    
+    .wish-card {
+      background: white;
+      border-radius: 15px;
+      padding: 30px 25px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s ease;
+      text-align: center;
+    }
+    
+    .wish-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+    }
+    
+    .wish-card i {
+      font-size: 2.5rem;
+      color: #ff4081;
+      margin-bottom: 20px;
+      display: block;
+    }
+    
+    .wish-card h3 {
+      color: #333;
+      margin-bottom: 15px;
+      font-size: 1.5rem;
+    }
+    
+    .wish-card p {
+      color: #666;
+      line-height: 1.6;
+      font-size: 1.1rem;
+    }
+    
+    .cake-section {
+      text-align: center;
+      margin: 60px 0;
+      position: relative;
+    }
+    
+    .cake-section h2 {
+      color: #ff4081;
+      font-size: 2.8rem;
+      margin-bottom: 15px;
+      text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.1);
+    }
+    
+    .cake-section p {
+      font-size: 1.2rem;
+      color: #666;
+      margin-bottom: 30px;
+    }
+    
+    .cake-container {
+      width: 200px;
+      height: 200px;
+      margin: 0 auto;
+      position: relative;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    
+    .cake-container:hover {
+      transform: scale(1.05);
+    }
+    
+    .cake-base {
+      width: 160px;
+      height: 60px;
+      background: linear-gradient(135deg, #8B4513, #A0522D);
+      border-radius: 10px;
+      position: absolute;
+      bottom: 0;
+      left: 20px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .cake-middle {
+      width: 140px;
+      height: 50px;
+      background: linear-gradient(135deg, #FFB6C1, #FF69B4);
+      border-radius: 10px;
+      position: absolute;
+      bottom: 60px;
+      left: 30px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    }
+    
+    .cake-top {
+      width: 120px;
+      height: 40px;
+      background: linear-gradient(135deg, #FF69B4, #FF1493);
+      border-radius: 10px;
+      position: absolute;
+      bottom: 110px;
+      left: 40px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .cake-candle {
+      width: 10px;
+      height: 40px;
+      background: linear-gradient(to bottom, #FFD700, #FFA500);
+      border-radius: 5px;
+      position: absolute;
+      bottom: 150px;
+      left: 95px;
+      z-index: 2;
+    }
+    
+    .cake-flame {
+      width: 15px;
+      height: 25px;
+      background: radial-gradient(circle, #FF4500, #FF8C00);
+      border-radius: 50% 50% 20% 20%;
+      position: absolute;
+      bottom: 190px;
+      left: 92.5px;
+      animation: flicker 0.8s infinite alternate;
+      z-index: 3;
+    }
+    
+    @keyframes flicker {
+      0% { 
+        transform: scale(1) rotate(-2deg); 
+        opacity: 1;
+      }
+      50% {
+        transform: scale(1.1) rotate(2deg);
+        opacity: 0.9;
+      }
+      100% {
+        transform: scale(1.05) rotate(0deg);
+        opacity: 0.8;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2.8rem;
+      }
+      
+      .subtitle {
+        font-size: 1.4rem;
+      }
+      
+      .message-content {
+        font-size: 1.1rem;
+      }
+      
+      .wishes-section h2 {
+        font-size: 2.2rem;
+      }
+      
+      .cake-section h2 {
+        font-size: 2.2rem;
+      }
+      
+      .wishes-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .videos {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .birthday-song {
+      margin-top: 40px;
+      font-size: 1.2rem;
+      color: #d61565;
+    }
+    @keyframes fadeout {
+      0% { opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+      }
+      100% { opacity: 0;
+      transform: translate(-50%, -100px) scale(1.5);
+     }
+   }
+    
+  </style>
+</head>
+<body>
+  <div class="balloons">
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+  </div>
+  
+  <div class="container">
+    <header>
+      <h1>Happy Birthday, Big Sis!</h1>
+      <p class="subtitle">We are Wishing you an amazing day filled with love and joy!</p>
+    </header>
+
+    <section class="message">
+      <div class="message-content">
+        <p>Dear <span class="highlight">Wendy</span>,</p>
+        <p>Happy Birthday! We are Wishing you a long life filled with prosperity and happiness.</p>
+        <p>We pray that Allah continues to guide and protect you on your journey.</p>
+        <p>Keep being your amazing self and enjoy every moment of your special day!</p>
+        <p style="margin-top: 30px;">xoxo <span class="highlight">Ibrahim,Mariam and Seyi</span></p>
+      </div>
+    </section>
+
+    <section class="videos">
+      <div class="video-frame">
+        <div class="video-placeholder" style="height: 200px; background: linear-gradient(135deg, #ff9a9e, #fad0c4); display: flex; align-items: center; justify-content: center; color: #666; font-size: 1.2rem;">
+          <i class="fas fa-heart" style="font-size: 30px; color: #2318c2; margin-right: 15px;"></i>
+          <video controls width="300" height="150">
+            <source src="Ibro vid.mp4" type="video/mp4">
+            <source src="Ibro vid.mp4" type="video/webm">
+            <source src="Ibro vid.mp4" type="video/ogg">
+          </video>
+        </div>
+        <div class="video-caption" class="highlight">Video from Ibrahim</div>
+      </div>
+      <div class="video-frame">
+        <div class="video-placeholder" style="height: 200px; background: linear-gradient(135deg, #a1c4fd, #c2e9fb); display: flex; align-items: center; justify-content: center; color: #666; font-size: 1.2rem;">
+          <i class="fas fa-heart" style="font-size: 30px; color: #ff4081; margin-right: 15px;"></i>
+          <video controls width="300" height="150">
+          <source src="mari vid.mp4" type="video/mp4">
+          <source src="mari vid.mp4" type="video/webm">
+          <source src="mari vid.mp4" type="video/ogg">
+          </video>
+        </div>
+        <div class="video-caption" class="highlight">Video from Mariam</div>
+      </div>
+      <div class="video-frame">
+        <div class="video-placeholder" style="height: 200px; background: linear-gradient(135deg, #ffecd2, #fcb69f); display: flex; align-items: center; justify-content: center; color: #666; font-size: 1.2rem;">
+          <i class="fas fa-heart" style="font-size: 30px; color: #ca3ba6; margin-right: 15px;"></i>
+          <video controls width="300" height="150">
+          <source src="shay vid.mp4" type="video/mp4">
+          <source src="shay vid.mp4" type="video/webm">
+          <source src="shay vid.mp4" type="video/ogg">
+          </video>
+        </div>
+        <div class="video-caption" class="highlight">Video from Seyi</div>
+      </div>
+    </section>
+    
+    <section class="wishes-section">
+      <h2>Birthday Wishes</h2>
+      <div class="wishes-grid">
+        <div class="wish-card">
+          <h3>Joy & Laughter</h3>
+          <p>May your day be filled with endless joy and laughter that echoes through the year.</p>
+        </div>
+        <div class="wish-card">
+          <h3>Love & Happiness</h3>
+          <p>Wishing you a lifetime of love, happiness, and all the beautiful things you deserve.</p>
+        </div>
+        <div class="wish-card">
+          <h3>Dreams Come True</h3>
+          <p>May all your dreams and aspirations come true in the most wonderful ways.</p>
+        </div>
+      </div>
+    </section>
+    
+    <section class="cake-section">
+      <h2>Make a Wish!</h2>
+      <p>Click on the cake to blow out the candles</p>
+      <div class="cake-container" onclick="blowCandles()">
+        <div class="cake-base"></div>
+        <div class="cake-middle"></div>
+        <div class="cake-top"></div>
+        <div class="cake-candle"></div>
+        <div class="cake-flame" id="cake-flame"></div>
+      </div>
+    </section>
+    <div class="birthday-song">
+      <p>Click to Play!</p>
+    <audio controls autoplay loop>
+      <source src="Busy_Signal_-_Happy_Birthday128k.mp3" type="audio/mpeg">
+      <source src="Busy_Signal_-_Happy_Birthday128k.mp3" type="audio/ogg">
+      <source src="Busy_Signal_-_Happy_Birthday128k.mp3" type="audio/wav">
+    </audio>
+    </div>
+
+  <script>
+    function blowCandles() {
+      const flame = document.getElementById('cake-flame');
+      flame.style.display = 'none';
+      
+      const message = document.createElement('div');
+      message.textContent = 'Wish Granted! 🎉';
+      message.style.position = 'fixed';
+      message.style.top = '50%';
+      message.style.left = '50%';
+      message.style.transform = 'translate(-50%, -50%)';
+      message.style.fontSize = '50px';
+      message.style.color = 'pink';
+      message.style.fontWeight = 'bold';
+      message.style.zIndex = '1000';
+      message.style.textShadow = '3px 3px 0px rgba(0,0,0,0.1)';
+      message.style.animation = 'fadeOut 2s forwards';
+      
+      document.body.appendChild(message);
+      
+      setTimeout(() => {
+        document.body.removeChild(message);
+      }, 2000);
+      
+
+      setTimeout(() => {
+        flame.style.display = 'block';
+      }, 5000);
+    }
+    
+    
+  
+    
+  </script>
+</body>
+</html>
